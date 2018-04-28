@@ -17,7 +17,7 @@ import java.net.URL;
 public class GetTemperature extends AsyncTask<Void, Void, Void>{
 
 
-String jsonRepsonse;
+String jsonRepsonse="";
 String temp;
 
 
@@ -30,17 +30,29 @@ String temp;
             HttpURLConnection httpURLConnection = (HttpURLConnection) queryUrl.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-            String line = "";
-            while (line != null) {
-                line = bufferedReader.readLine();
-                jsonRepsonse = jsonRepsonse + line;
+            StringBuilder sb= new StringBuilder();
+            String line = null;
+            try {
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line + "\n");
+                    jsonRepsonse=jsonRepsonse+line;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
 
-          JSONObject root= new JSONObject(jsonRepsonse);
-          JSONObject main = new JSONObject(root.getString("main"));
-           temp = main.optString("temp");
+
+            JSONObject root= new JSONObject(jsonRepsonse);
+            JSONObject main = new JSONObject(root.getString("main"));
+            double valueT=main.getDouble("temp");
+            temp=String.valueOf(valueT);
 
 
         } catch (MalformedURLException e) {
