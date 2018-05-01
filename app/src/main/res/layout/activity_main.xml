@@ -3,28 +3,113 @@
    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     >
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:background="@color/colorOfText"
+        android:layout_margin="8dp"
         android:id="@+id/edt_city"
-        android:hint="@string/city_string"/>
+        android:hint="населено място"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_text"
+        android:text="как е навън?"
         android:id="@+id/btn_get_t"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:textAllCaps="false"
+         android:textColor="@color/colorOfText"
+        android:background="@color/colorPrimaryDark"
+        />
+</LinearLayout>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_description"
+        android:text="@string/desc"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:textColor="@color/colorOfText"
+        android:textSize="28sp"
+        android:textAllCaps="true"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="Температура: "
+        android:textColor="@color/colorOfText"
+        android:textSize="18sp"
+
+        />
+
+    <TextView
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_temperature"
+        android:text="@string/temperature"
+        android:layout_gravity="center"
+        android:textColor="@color/colorOfText"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="42sp"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical"
+        android:visibility="invisible"
+
         />
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:id="@+id/tv_temperature"
-        android:text="@string/temperature"
+        android:text="@string/winspeed"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:textColor="@color/colorOfText"
+        android:textSize="18sp"
 
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_windspeed"
         android:layout_gravity="center"
         android:padding="16dp"
+        android:textColor="@color/colorOfText"
+        android:textSize="28sp"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/humidity"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorOfText"
+
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_humidity"
+        android:text="@string/humidity"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:textSize="28sp"
+        android:textColor="@color/colorOfText"
+        android:visibility="invisible"
         />
 
 </LinearLayout>

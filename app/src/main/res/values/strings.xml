@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">AsyncTaskFetchingJsonResponse</string>
     <string name="city_string">city</string>
-    <string name="temperature">celsium degrees</string>
+    <string name="temperature">Температура: </string>
     <string name="btn_text">What is the temperature?</string>
+    <string name="desc">описание</string>
+    <string name="winspeed">Скорост на вятъра: </string>
+    <string name="humidity">Влажност: </string>
 </resources>

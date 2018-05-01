@@ -12,8 +12,12 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
     EditText edtUserInput;
     Button getTBtn;
-    public static TextView tvResults;
+    public static TextView tvTemp;
     public static String userInput=" ";
+
+    public static TextView tvWind;
+    public static TextView tvHumidity;
+    public static TextView tvDescription;
 
 
     @Override
@@ -22,9 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtUserInput= (EditText)findViewById(R.id.edt_city);
         getTBtn= (Button)findViewById(R.id.btn_get_t);
-        tvResults=(TextView) findViewById(R.id.tv_temperature);
-
-
+        tvTemp=(TextView) findViewById(R.id.tv_temperature);
+        tvWind=(TextView) findViewById(R.id.tv_windspeed);
+        tvHumidity=(TextView) findViewById(R.id.tv_humidity);
+        tvDescription=(TextView) findViewById(R.id.tv_description);
 
         getTBtn.setOnClickListener(new View.OnClickListener() {
 

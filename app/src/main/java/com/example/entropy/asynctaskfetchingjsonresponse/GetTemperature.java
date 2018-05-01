@@ -1,6 +1,7 @@
 package com.example.entropy.asynctaskfetchingjsonresponse;
 
 import android.os.AsyncTask;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +57,8 @@ String humidity="";
             JSONObject main = new JSONObject(root.getString("main"));
             double valueT=main.getDouble("temp");
             valueT=valueT-273.15;
-            temp=String.valueOf(valueT)+" C";
+            int temperature=(int)Math.round (valueT);
+            temp=String.valueOf(temperature)+"\u00b0"+ " C";
 //get description
             JSONArray weather= root.getJSONArray("weather");
             JSONObject weatherObject= weather.getJSONObject(0);
@@ -69,7 +71,8 @@ String humidity="";
             //get wind speed
             JSONObject wind= new JSONObject(root.getString("wind"));
             double speedOfWind=wind.getDouble("speed");
-            windSpeed=String.valueOf(speedOfWind)+" m/s";
+            int windInt= (int) Math.round(speedOfWind);
+            windSpeed=String.valueOf(windInt)+" m/s";
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -85,7 +88,14 @@ String humidity="";
 
     @Override
     protected void onPostExecute(Void Void) {
-        MainActivity.tvResults.setText(jsonRepsonse+" \n"+ temp+"\n"+description+ "\n"+ humidity+"\n"+ windSpeed);
+        MainActivity.tvTemp.setText(temp);
+        MainActivity.tvTemp.setVisibility(View.VISIBLE);
+        MainActivity.tvHumidity.setText(humidity+ "%");
+        MainActivity.tvHumidity.setVisibility(View.VISIBLE);
+        MainActivity.tvWind.setText(windSpeed);
+        MainActivity.tvWind.setVisibility(View.VISIBLE);
+        MainActivity.tvDescription.setText(description);
+        MainActivity.tvDescription.setVisibility(View.VISIBLE);
         super.onPostExecute(Void);
 
     }
