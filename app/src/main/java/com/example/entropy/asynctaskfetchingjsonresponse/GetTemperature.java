@@ -18,7 +18,10 @@ public class GetTemperature extends AsyncTask<Void, Void, Void>{
 
 
 String jsonRepsonse="";
-String temp;
+String temp="";
+String description="";
+String windSpeed="";
+String humidity="";
 
 
 
@@ -48,12 +51,25 @@ String temp;
             }
 
 
-
+//get T
             JSONObject root= new JSONObject(jsonRepsonse);
             JSONObject main = new JSONObject(root.getString("main"));
             double valueT=main.getDouble("temp");
-            temp=String.valueOf(valueT);
+            valueT=valueT-273.15;
+            temp=String.valueOf(valueT)+" C";
+//get description
+            JSONArray weather= root.getJSONArray("weather");
+            JSONObject weatherObject= weather.getJSONObject(0);
+            description=weatherObject.getString("description");
 
+//get humidity
+            double humidityPerc=main.getDouble("humidity");
+            humidity=String.valueOf(humidityPerc);
+
+            //get wind speed
+            JSONObject wind= new JSONObject(root.getString("wind"));
+            double speedOfWind=wind.getDouble("speed");
+            windSpeed=String.valueOf(speedOfWind)+" m/s";
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -69,7 +85,7 @@ String temp;
 
     @Override
     protected void onPostExecute(Void Void) {
-        MainActivity.tvResults.setText(jsonRepsonse+" \n"+ temp);
+        MainActivity.tvResults.setText(jsonRepsonse+" \n"+ temp+"\n"+description+ "\n"+ humidity+"\n"+ windSpeed);
         super.onPostExecute(Void);
 
     }
