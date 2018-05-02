@@ -6,4 +6,6 @@
     <string name="desc">описание</string>
     <string name="winspeed">Скорост на вятъра: </string>
     <string name="humidity">Влажност: </string>
+    <string name="tvLocation">Населено място</string>
+    <string name="tvCoordinates">Координати</string>
 </resources>

@@ -15,25 +15,25 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class GetTemperature extends AsyncTask<Void, Void, Void>{
+public class GetWeatherByCoordinates extends AsyncTask<Void, Void, Void> {
 
-
-String jsonRepsonse="";
-String temp="";
-String description="";
-String windSpeed="";
-String humidity="";
-String city="";
-String gtLong;
-String gtLat;
-
-
-
+    String jsonRepsonse="";
+    String temp="";
+    String description="";
+    String windSpeed="";
+    String humidity="";
+    String city="";
 
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            URL queryUrl = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + MainActivity.userInput + "&APPID=f21a5053b9d51540759b04f263244380");
+            URL queryUrl = new URL
+                    ("http://api.openweathermap.org/data/2.5/weather?lat=" +
+                            MainActivity.wLatitude +
+                            "&lon=" +
+                            MainActivity.wLongitude+
+                            "&APPID=f21a5053b9d51540759b04f263244380"
+                    );
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) queryUrl.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
@@ -67,12 +67,6 @@ String gtLat;
             //get location name
             city=root.getString("name");
 
-            //get cordinates
-JSONObject coord= new JSONObject(root.getString("coord"));
-gtLong=coord.getString("lon");
-gtLat=coord.getString("lat");
-
-
 //get description
             JSONArray weather= root.getJSONArray("weather");
             JSONObject weatherObject= weather.getJSONObject(0);
@@ -99,22 +93,17 @@ gtLat=coord.getString("lat");
 
         return null;
     }
-
     @Override
     protected void onPostExecute(Void Void) {
         MainActivity.tvTemp.setText(temp);
-
         MainActivity.tvHumidity.setText(humidity+ "%");
         MainActivity.tvWind.setText(windSpeed);
         MainActivity.tvDescription.setText(description);
         MainActivity.tvLocation.setText(city);
-        MainActivity.tvCoordinates.setText(gtLong+ " "+gtLat);
         super.onPostExecute(Void);
 
     }
 
-    //f21a5053b9d51540759b04f263244380 api key
-    //http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=f21a5053b9d51540759b04f263244380
 
-    //example query: http://api.openweathermap.org/data/2.5/weather?q=Plovdiv&APPID=f21a5053b9d51540759b04f263244380
+    //example query with long and lat api.openweathermap.org/data/2.5/weather?lat=24.6967514&lon=42.1321461
 }

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     >
+
 <LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -30,6 +31,29 @@
         android:background="@color/colorPrimaryDark"
         />
 </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id= "@+id/tv_location"
+            android:text="@string/tvLocation"
+            android:textColor="@color/colorOfText"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id= "@+id/tv_coordinates"
+            android:text="@string/tvCoordinates"
+            android:textColor="@color/colorOfText"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -40,7 +64,7 @@
         android:textColor="@color/colorOfText"
         android:textSize="28sp"
         android:textAllCaps="true"
-        android:visibility="invisible"
+
         />
     <TextView
         android:layout_height="wrap_content"
@@ -66,7 +90,7 @@
         android:padding="16dp"
         android:layout_margin="16dp"
         android:gravity="center_vertical"
-        android:visibility="invisible"
+
 
         />
 
@@ -88,7 +112,7 @@
         android:padding="16dp"
         android:textColor="@color/colorOfText"
         android:textSize="28sp"
-        android:visibility="invisible"
+
         />
     <TextView
         android:layout_height="wrap_content"
@@ -109,7 +133,7 @@
         android:padding="16dp"
         android:textSize="28sp"
         android:textColor="@color/colorOfText"
-        android:visibility="invisible"
+
         />
 
 </LinearLayout>
